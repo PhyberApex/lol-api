@@ -26,13 +26,9 @@ public class Start {
 
 		// Usage of API to store data
 		SaveConfiguration config1 = new SaveConfiguration(SaveData.SR_RANKED,
-				"krisniac");
-		SaveConfiguration config2 = new SaveConfiguration(SaveData.SR_RANKED,
 				"exodragon");
-		SaveConfiguration config3 = new SaveConfiguration(SaveData.SR_NORMAL,
-				"exodragon");
-		try {
-			APIClient client2 = new APIClient(10, config1, config2, config3);
+				try {
+			APIClient client2 = new APIClient(10, config1);
 			client2.startGatheringData();
 			Thread.sleep(60 * 1000);
 			client2.stopGatheringData();

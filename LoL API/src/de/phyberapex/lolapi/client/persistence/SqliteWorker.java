@@ -64,21 +64,21 @@ public class SqliteWorker implements Runnable {
 						stmt.setBoolean(3, s.isWin());
 						stmt.setInt(4, s.getOwnChamp().getId());
 						for (int i = 0; i < s.getOwnTeam().length * 2; i++) {
-							if (s.getOwnTeam()[i] != null) {
-								int index = i;
-								stmt.setInt(4 + i, s.getOwnTeam()[index]
+							int index = Math.round(new Long(i)/2L);
+							if (s.getOwnTeam()[index] != null) {
+								stmt.setInt(5 + i, s.getOwnTeam()[index]
 										.getChampion().getId());
 								i++;
-								stmt.setString(4 + i,
+								stmt.setString(5 + i,
 										s.getOwnTeam()[index].getSummonerName());
 							} else {
-								stmt.setInt(4 + i, 0);
+								stmt.setInt(5 + i, 0);
 								i++;
 							}
 						}
 						for (int i = 0; i < s.getEnemyTeam().length * 2; i++) {
-							if (s.getEnemyTeam()[i] != null) {
-								int index = i;
+							int index = Math.round(new Long(i)/2L);
+							if (s.getEnemyTeam()[index] != null) {
 								stmt.setInt(9 + i, s.getEnemyTeam()[index]
 										.getChampion().getId());
 								i++;
