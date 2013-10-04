@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.client.persistence;
+package de.phyberapex.lolapi.persistance;
 
 public class SaveConfiguration {
 

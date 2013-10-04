@@ -1,20 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project LoL API with libraries in sub-folder">
-    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
-    <!--ANT 1.7 is required                                        -->
-    <target name="create_run_jar">
-        <jar destfile="C:/Dokumente und Einstellungen/wallij01/Desktop/bleb.jar">
-            <manifest>
-                <attribute name="Main-Class" value="de.phyberapex.lolapi.main.Start"/>
-                <attribute name="Class-Path" value=". bleb_lib/gson-2.2.4.jar bleb_lib/sqlite-jdbc-3.7.2.jar bleb_lib/LoLRTMPS.jar"/>
-            </manifest>
-            <fileset dir="F:/Documents/Dev/workspace.git/LoL API/bin"/>
-            <fileset dir="F:/Documents/Dev/workspace.git/Basic/bin"/>
-        </jar>
-        <delete dir="C:/Dokumente und Einstellungen/wallij01/Desktop/bleb_lib"/>
-        <mkdir dir="C:/Dokumente und Einstellungen/wallij01/Desktop/bleb_lib"/>
-        <copy file="F:/Documents/Dev/workspace.git/Libraries/google-gson-2.2.4/gson-2.2.4.jar" todir="C:/Dokumente und Einstellungen/wallij01/Desktop/bleb_lib"/>
-        <copy file="F:/Documents/Dev/workspace.git/Libraries/sqlite/sqlite-jdbc-3.7.2.jar" todir="C:/Dokumente und Einstellungen/wallij01/Desktop/bleb_lib"/>
-        <copy file="F:/Documents/Dev/workspace.git/LoL API/libs/LoLRTMPS.jar" todir="C:/Dokumente und Einstellungen/wallij01/Desktop/bleb_lib"/>
-    </target>
+<project default="create_api_only" name="Create Runnable Jar for Project LoL API with libraries in sub-folder">
+	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
+	<!--ANT 1.7 is required                                        -->
+	<target name="create_api_only">
+		<jar destfile="build/LoL-API.jar">
+			<manifest>
+				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/rtmps.jar" />
+			</manifest>
+			<fileset excludes="**lolapi/main**class, **lolapi/persistance**class" dir="bin" />
+		</jar>
+		<delete dir="build/lib" />
+		<mkdir dir="build/lib" />
+		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
+		<copy file="libs/rtmps.jar" todir="build/lib" />
+		<copy todir="build/champions">
+			<fileset dir="champions" />
+		</copy>
+		<copy todir="build/items">
+			<fileset dir="items" />
+		</copy>
+		<copy todir="build/spells">
+			<fileset dir="spells" />
+		</copy>
+	</target>
+	<target name="api_with_persistance">
+		<jar destfile="build/LoL-API-Persistance.jar">
+			<manifest>
+				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/sqlite-jdbc-3.7.2.jar lib/rtmps.jar" />
+			</manifest>
+			<fileset excludes="**lolapi/main**class" dir="bin" />
+		</jar>
+		<delete dir="build/lib" />
+		<mkdir dir="build/lib" />
+		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
+		<copy file="libs/sqlite-jdbc-3.7.2.jar" todir="build/lib" />
+		<copy file="libs/rtmps.jar" todir="build/lib" />
+		<copy todir="build/champions">
+			<fileset dir="champions" />
+		</copy>
+		<copy todir="build/items">
+			<fileset dir="items" />
+		</copy>
+		<copy todir="build/spells">
+			<fileset dir="spells" />
+		</copy>
+	</target>
 </project>
