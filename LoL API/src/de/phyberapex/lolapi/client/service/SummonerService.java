@@ -2,6 +2,7 @@ package de.phyberapex.lolapi.client.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.gvaneyck.rtmp.encoding.TypedObject;
 
@@ -30,7 +31,27 @@ public class SummonerService extends APIService {
 			TypedObject result = client.getResult(id);
 			TypedObject resultData = result.getTO("data").getTO("body");
 			returnValue = resultData.getArray("array")[0].toString();
-			
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return returnValue;
+	}
+
+	public HashMap<Integer, String> getSummonerNameBySummonerId(
+			int... summonerIds) {
+		HashMap<Integer, String> returnValue = new HashMap<>();
+		try {
+			int id = client.invoke("summonerService", "getSummonerNames",
+					new Object[] { summonerIds });
+			TypedObject result = client.getResult(id);
+			TypedObject resultData = result.getTO("data").getTO("body");
+			for (int i = 0; i < summonerIds.length; i++) {
+				returnValue.put(summonerIds[i],
+						resultData.getArray("array")[i].toString());
+			}
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -98,6 +119,10 @@ public class SummonerService extends APIService {
 		int ownTeamId = toStats.getInt("teamId");
 		int counterOwn = 0;
 		int counterEnemy = 0;
+		for (Object oFellowPlayer : toStats.getTO("fellowPlayers").getArray(
+				"array")) {
+			
+		}
 		for (Object oFellowPlayer : toStats.getTO("fellowPlayers").getArray(
 				"array")) {
 			TypedObject toFellowPlayer = (TypedObject) oFellowPlayer;
