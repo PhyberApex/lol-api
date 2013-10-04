@@ -1,7 +1,6 @@
 package de.phyberapex.lolapi.gui;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
 
 import static de.phyberapex.lolapi.base.Constants.*;
 
@@ -12,15 +11,18 @@ import de.phyberapex.lolapi.client.APIClient;
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+	private static MainFrame instance;
 	private APIClient apiClient;
+	private MenuBar menuBar;
+	private ServicesTabbedPane content;
 	private StatusBar statusBar;
 
-	public MainFrame(APIClient client) {
+	private MainFrame() {
 		super(APP_NAME + " v." + APP_VERSION + " by " + APP_AUTOR);
 		this.setSize(800, 600);
 		this.setLayout(new BorderLayout());
 		this.setLocationRelativeTo(null);
-		this.apiClient = client;
+		this.apiClient = new APIClient();
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		createGUI();
 		layoutGUI();
@@ -28,10 +30,34 @@ public class MainFrame extends JFrame {
 	}
 
 	private void createGUI() {
+		this.menuBar = new MenuBar(this.apiClient);
+		this.content = new ServicesTabbedPane();
 		this.statusBar = new StatusBar();
 	}
 
 	private void layoutGUI() {
+		this.setJMenuBar(this.menuBar);
+		this.add(this.content, BorderLayout.CENTER);
 		this.add(this.statusBar, BorderLayout.SOUTH);
+	}
+
+	public void setStatusText(String status) {
+		this.statusBar.setStatusText(status);
+	}
+
+	public static synchronized MainFrame getInstance() {
+		if (instance == null) {
+			instance = new MainFrame();
+		}
+		return instance;
+	}
+
+	public void update() {
+		if (apiClient.isConnected()) {
+
+		} else {
+
+		}
+
 	}
 }
