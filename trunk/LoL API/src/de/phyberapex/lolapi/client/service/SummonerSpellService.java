@@ -8,16 +8,19 @@ import de.phyberapex.lolapi.model.SummonerSpellList;
 
 public class SummonerSpellService extends APIService {
 
+	private SummonerSpellList spellList;
+
 	public SummonerSpellService(APIClient client) {
 		super(client);
+		this.spellList = new SummonerSpellList();
 	}
 
-	public List<SummonerSpell> getAllItems() {
-		return SummonerSpellList.getAllSpells();
+	public List<SummonerSpell> getAllSpells() {
+		return spellList.getAllSpells();
 	}
 
-	public SummonerSpell getItemById(int id) {
-		return SummonerSpellList.getSpellById(id);
+	public SummonerSpell getSpellById(int id) {
+		return spellList.getSpellById(id);
 	}
 
 }
