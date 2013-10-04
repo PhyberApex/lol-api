@@ -1,6 +1,6 @@
 package de.phyberapex.lolapi.persistance;
 
-import static de.phyberapex.lolapi.base.Constants.*;
+import static de.phyberapex.lolapi.persistance.Constants.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ public class DBHelper {
 
 				System.out.println("Creating Connection to Database...");
 				connection = DriverManager.getConnection("jdbc:sqlite:"
-						+ SQLITE_FILEPATH);
+						+ PERSISTANCE_INFO.getProperty("DATABASE_PATH"));
 				if (!connection.isClosed())
 					System.out.println("...Connection established");
 				initDB();

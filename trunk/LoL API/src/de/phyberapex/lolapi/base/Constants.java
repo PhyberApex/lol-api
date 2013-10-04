@@ -11,35 +11,14 @@ import de.phyberapex.base.MainConstants;
 public class Constants extends MainConstants {
 
 	/* ==== Basic stuff ==== */
-	public static final String APP_NAME = "LoLAPI";
-	public static final String APP_VERSION = "0.01";
-	public static final String APP_AUTOR = "Phyber.Apex";
-	public static final boolean DEV_VERSION = true;
+	public static Properties BASIC_INFO;
 
 	/* ==== LoL login stuff ==== */
-	public static final String LOL_LOGIN;
-	public static final String LOL_PASSWORD;
-	public static final String LOL_CLIENT_VERSION;
-	public static final ServerInfo LOL_SERVER;
-	
-	/* ==== Persistance stuff ==== */
-	public static final String SQLITE_FILEPATH;
+	public static Properties LOL_LOGIN_INFO;
 
-	static {
-		Properties props = null;
-		try {
-			props = FileHelper.readXMLPropertiesFile("lol_login.xml");
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.exit(0);
-		}
-		SQLITE_FILEPATH = props.getProperty("DATABASE_PATH");
-		LOL_LOGIN = props.getProperty("LOGINNAME");
-		LOL_PASSWORD = props.getProperty("PASSWORD");
-		LOL_CLIENT_VERSION = props.getProperty("CLIENT_VERSION");
-		ServerInfo serv;
-		switch (props.getProperty("SERVER")) {
+	public static ServerInfo parseServer(String property) {
+		ServerInfo serv = null;
+		switch (property) {
 		case "NA":
 			serv = ServerInfo.NA;
 			break;
@@ -91,6 +70,16 @@ public class Constants extends MainConstants {
 		default:
 			serv = ServerInfo.NA;
 		}
-		LOL_SERVER = serv;
+		return serv;
+	}
+
+	static {
+		try {
+			BASIC_INFO = FileHelper.readXMLPropertiesFile("lol_login.xml");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
 	}
 }
