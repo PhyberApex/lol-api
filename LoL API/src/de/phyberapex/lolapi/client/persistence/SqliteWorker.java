@@ -67,7 +67,8 @@ public class SqliteWorker implements Runnable {
 						checkGame = s.getQueueType() == QueueType.ARAM_UNRANKED_5x5;
 						break;
 					case DOM_BOTS:
-						checkGame = s.getQueueType() == QueueType.BOT && s.getMap() == GameMap.CRYSTAL_SCAR;
+						checkGame = s.getQueueType() == QueueType.BOT
+								&& s.getGameMode() == GameMode.ODIN;
 						break;
 					case DOM_CUSTOM:
 						break;
@@ -75,7 +76,8 @@ public class SqliteWorker implements Runnable {
 						checkGame = s.getQueueType() == QueueType.NORMAL;
 						break;
 					case SR_BOTS:
-						checkGame = s.getQueueType() == QueueType.BOT && s.getMap() == GameMap.SUMMONERS_RIFT;
+						checkGame = s.getQueueType() == QueueType.BOT
+								&& s.getMap() == GameMap.SUMMONERS_RIFT;
 						break;
 					case SR_CUSTOM:
 						break;
@@ -83,10 +85,12 @@ public class SqliteWorker implements Runnable {
 						checkGame = s.getQueueType() == QueueType.NORMAL;
 						break;
 					case SR_RANKED:
-						checkGame = s.getQueueType() == QueueType.RANKED_SOLO_5x5 || s.getQueueType() == QueueType.RANKED_TEAM_5x5;
+						checkGame = s.getQueueType() == QueueType.RANKED_SOLO_5x5
+								|| s.getQueueType() == QueueType.RANKED_TEAM_5x5;
 						break;
 					case TT_BOTS:
-						checkGame = s.getQueueType() == QueueType.BOT && s.getMap() == GameMap.TWISTED_TREELINE;
+						checkGame = s.getQueueType() == QueueType.BOT
+								&& s.getMap() == GameMap.TWISTED_TREELINE;
 						break;
 					case TT_CUSTOM:
 						break;
