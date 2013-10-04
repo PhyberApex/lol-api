@@ -59,7 +59,7 @@ public class SummonerService extends APIService {
 		return returnValue;
 	}
 
-	public SummonerInfo getSummonerIdByName(String name) {
+	public SummonerInfo getSummonerInfoByName(String name) {
 		SummonerInfo returnValue = null;
 		try {
 			int id = client.invoke("summonerService", "getSummonerByName",
@@ -81,7 +81,7 @@ public class SummonerService extends APIService {
 		ArrayList<MatchStats> returnValue = new ArrayList<>();
 		try {
 			int id = client.invoke("playerStatsService", "getRecentGames",
-					new Object[] { getSummonerIdByName(name).getAccountId() });
+					new Object[] { getSummonerInfoByName(name).getAccountId() });
 			TypedObject result = client.getResult(id);
 			TypedObject toMatchStats = result.getTO("data").getTO("body")
 					.getTO("gameStatistics");
