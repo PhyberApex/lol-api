@@ -13,10 +13,7 @@ import de.phyberapex.lolapi.info.GameMode;
 import de.phyberapex.lolapi.info.MatchStats;
 import de.phyberapex.lolapi.info.QueueType;
 import de.phyberapex.lolapi.info.SummonerInfo;
-import de.phyberapex.lolapi.model.ChampionList;
 import de.phyberapex.lolapi.model.FellowPlayer;
-import de.phyberapex.lolapi.model.ItemList;
-import de.phyberapex.lolapi.model.SummonerSpellList;
 
 public class SummonerService extends APIService {
 
@@ -104,16 +101,18 @@ public class SummonerService extends APIService {
 		MatchStats stats = new MatchStats();
 		TypedObject toStats = (TypedObject) o;
 		stats.setGameId(toStats.getLong("gameId"));
-		stats.setOwnChamp(client.getChampionService().getChampionById(toStats
-				.getInt("championId")));
+		stats.setOwnChamp(client.getChampionService().getChampionById(
+				toStats.getInt("championId")));
 		stats.setPing(toStats.getInt("userServerPing"));
 		stats.setGameMode(GameMode.valueOf(toStats.getString("gameMode")));
 		stats.setEloChange(toStats.getInt("eloChange"));
 		stats.setIpEarned(toStats.getInt("ipEarned"));
 		stats.setAmountPremade(toStats.getInt("premadeSize"));
 		stats.setCreateDate(toStats.getDate("createDate"));
-		stats.setSpell1(client.getSummonerSpellService().getSpellById(toStats.getInt("spell1")));
-		stats.setSpell2(client.getSummonerSpellService().getSpellById(toStats.getInt("spell2")));
+		stats.setSpell1(client.getSummonerSpellService().getSpellById(
+				toStats.getInt("spell1")));
+		stats.setSpell2(client.getSummonerSpellService().getSpellById(
+				toStats.getInt("spell2")));
 		stats.setQueueType(QueueType.valueOf(toStats.getString("queueType")));
 		stats.setMap(GameMap.getMapById(toStats.getInt("gameMapId")));
 		stats.setLeaver(toStats.getBool("leaver"));
@@ -133,14 +132,14 @@ public class SummonerService extends APIService {
 			if (toFellowPlayer.getInt("teamId") == ownTeamId) {
 				stats.getOwnTeam()[counterOwn] = new FellowPlayer(
 						summoners.get(toFellowPlayer.getInt("summonerId")),
-						client.getChampionService().getChampionById(toFellowPlayer
-								.getInt("championId")));
+						client.getChampionService().getChampionById(
+								toFellowPlayer.getInt("championId")));
 				counterOwn++;
 			} else {
 				stats.getEnemyTeam()[counterEnemy] = new FellowPlayer(
 						summoners.get(toFellowPlayer.getInt("summonerId")),
-						client.getChampionService().getChampionById(toFellowPlayer
-								.getInt("championId")));
+						client.getChampionService().getChampionById(
+								toFellowPlayer.getInt("championId")));
 				counterEnemy++;
 			}
 		}
@@ -159,7 +158,8 @@ public class SummonerService extends APIService {
 				stats.setCrowdControlDealt(value);
 				break;
 			case "ITEM3":
-				stats.getItems()[3] = client.getItemService().getItemById(value);
+				stats.getItems()[3] = client.getItemService()
+						.getItemById(value);
 				break;
 			case "PHYSICAL_DAMAGE_DEALT_TO_CHAMPIONS":
 				stats.setPhysicalDmgDealtToChamps(value);
@@ -168,13 +168,15 @@ public class SummonerService extends APIService {
 				stats.setOwnJungleMinionsKilled(value);
 				break;
 			case "ITEM0":
-				stats.getItems()[0] = client.getItemService().getItemById(value);
+				stats.getItems()[0] = client.getItemService()
+						.getItemById(value);
 				break;
 			case "TRUE_DAMAGE_DEALT_TO_CHAMPIONS":
 				stats.setTrueDmgToChamps(value);
 				break;
 			case "ITEM2":
-				stats.getItems()[2] = client.getItemService().getItemById(value);
+				stats.getItems()[2] = client.getItemService()
+						.getItemById(value);
 				break;
 
 			case "TOTAL_DAMAGE_DEALT_TO_CHAMPIONS":
@@ -190,7 +192,8 @@ public class SummonerService extends APIService {
 				stats.setDeaths(value);
 				break;
 			case "ITEM4":
-				stats.getItems()[4] = client.getItemService().getItemById(value);
+				stats.getItems()[4] = client.getItemService()
+						.getItemById(value);
 				break;
 			case "MINIONS_KILLED":
 				stats.setMinionsKilled(value);
@@ -231,7 +234,8 @@ public class SummonerService extends APIService {
 				stats.setLevel(value);
 				break;
 			case "ITEM1":
-				stats.getItems()[1] = client.getItemService().getItemById(value);
+				stats.getItems()[1] = client.getItemService()
+						.getItemById(value);
 				break;
 			case "LARGEST_MULTI_KILL":
 				stats.setLargestKillingSpree(value);
@@ -246,7 +250,8 @@ public class SummonerService extends APIService {
 				stats.setGoldEarned(value);
 				break;
 			case "ITEM5":
-				stats.getItems()[5] = client.getItemService().getItemById(value);
+				stats.getItems()[5] = client.getItemService()
+						.getItemById(value);
 				break;
 			case "BARRACKS_KILLED":
 				stats.setBarracksKilled(value);
