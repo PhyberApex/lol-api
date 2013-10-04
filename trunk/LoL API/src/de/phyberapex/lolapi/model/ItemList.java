@@ -22,7 +22,7 @@ public class ItemList {
 	}
 
 	private static void parseJSON() {
-		File championFolder = new File("items");
+		File championFolder = new File("resource/json/items");
 		if (championFolder.isDirectory()) {
 			for (File championFile : championFolder.listFiles()) {
 				try {
