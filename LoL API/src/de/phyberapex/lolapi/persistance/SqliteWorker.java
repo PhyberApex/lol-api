@@ -71,6 +71,7 @@ public class SqliteWorker implements Runnable {
 								&& s.getGameMode() == GameMode.ODIN;
 						break;
 					case DOM_CUSTOM:
+						checkGame = s.getQueueType() == QueueType.NONE && s.getMap() == GameMap.CRYSTAL_SCAR;
 						break;
 					case DOM_NORMAL:
 						checkGame = s.getQueueType() == QueueType.NORMAL
