@@ -452,5 +452,4 @@ public class MatchStats {
 	public void setBarracksKilled(int barracksKilled) {
 		this.barracksKilled = barracksKilled;
 	}
-
 }

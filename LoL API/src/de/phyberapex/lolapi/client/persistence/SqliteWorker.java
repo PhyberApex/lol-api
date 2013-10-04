@@ -9,7 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import de.phyberapex.lolapi.client.APIClient;
+import de.phyberapex.lolapi.info.GameMap;
+import de.phyberapex.lolapi.info.GameMode;
 import de.phyberapex.lolapi.info.MatchStats;
+import de.phyberapex.lolapi.info.QueueType;
 
 public class SqliteWorker implements Runnable {
 
@@ -45,7 +48,6 @@ public class SqliteWorker implements Runnable {
 			long currMilis = System.currentTimeMillis();
 			diffInMinutes = new Double((currMilis - lastRun)) / 1000 / 60;
 		}
-		System.out.println("DONE GATHERING!");
 	}
 
 	private void gatherData() {
@@ -58,13 +60,51 @@ public class SqliteWorker implements Runnable {
 				for (MatchStats s : stats) {
 					// TODO check if game is to check
 					boolean checkGame = true;
+					switch (conf.getData()) {
+					case ARAM_CUSTOM:
+						break;
+					case ARAM_NORMAL:
+						checkGame = s.getQueueType() == QueueType.ARAM_UNRANKED_5x5;
+						break;
+					case DOM_BOTS:
+						checkGame = s.getQueueType() == QueueType.BOT && s.getMap() == GameMap.CRYSTAL_SCAR;
+						break;
+					case DOM_CUSTOM:
+						break;
+					case DOM_NORMAL:
+						checkGame = s.getQueueType() == QueueType.NORMAL;
+						break;
+					case SR_BOTS:
+						checkGame = s.getQueueType() == QueueType.BOT && s.getMap() == GameMap.SUMMONERS_RIFT;
+						break;
+					case SR_CUSTOM:
+						break;
+					case SR_NORMAL:
+						checkGame = s.getQueueType() == QueueType.NORMAL;
+						break;
+					case SR_RANKED:
+						checkGame = s.getQueueType() == QueueType.RANKED_SOLO_5x5 || s.getQueueType() == QueueType.RANKED_TEAM_5x5;
+						break;
+					case TT_BOTS:
+						checkGame = s.getQueueType() == QueueType.BOT && s.getMap() == GameMap.TWISTED_TREELINE;
+						break;
+					case TT_CUSTOM:
+						break;
+					case TT_NORMAL:
+						checkGame = s.getQueueType() == QueueType.NORMAL_3x3;
+						break;
+					case TT_RANKED:
+						checkGame = s.getQueueType() == QueueType.RANKED_3x3;
+						break;
+					}
+
 					if (checkGame && !isGameInDB(s.getGameId())) {
 						stmt.setLong(1, s.getGameId());
 						stmt.setString(2, s.getSummonerName());
 						stmt.setBoolean(3, s.isWin());
 						stmt.setInt(4, s.getOwnChamp().getId());
 						for (int i = 0; i < s.getOwnTeam().length * 2; i++) {
-							int index = Math.round(new Long(i)/2L);
+							int index = Math.round(new Long(i) / 2L);
 							if (s.getOwnTeam()[index] != null) {
 								stmt.setInt(5 + i, s.getOwnTeam()[index]
 										.getChampion().getId());
@@ -78,13 +118,13 @@ public class SqliteWorker implements Runnable {
 							}
 						}
 						for (int i = 0; i < s.getEnemyTeam().length * 2; i++) {
-							int index = Math.round(new Long(i)/2L);
+							int index = Math.round(new Long(i) / 2L);
 							if (s.getEnemyTeam()[index] != null) {
 								stmt.setInt(13 + i, s.getEnemyTeam()[index]
 										.getChampion().getId());
 								i++;
-								stmt.setString(13 + i,
-										s.getEnemyTeam()[index].getSummonerName());
+								stmt.setString(13 + i, s.getEnemyTeam()[index]
+										.getSummonerName());
 							} else {
 								stmt.setInt(13 + i, 0);
 								i++;
