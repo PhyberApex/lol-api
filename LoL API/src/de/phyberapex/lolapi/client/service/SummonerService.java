@@ -3,6 +3,7 @@ package de.phyberapex.lolapi.client.service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import com.gvaneyck.rtmp.encoding.TypedObject;
 
@@ -31,7 +32,6 @@ public class SummonerService extends APIService {
 			TypedObject result = client.getResult(id);
 			TypedObject resultData = result.getTO("data").getTO("body");
 			returnValue = resultData.getArray("array")[0].toString();
-
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,7 +40,7 @@ public class SummonerService extends APIService {
 	}
 
 	public HashMap<Integer, String> getSummonerNameBySummonerId(
-			int... summonerIds) {
+			Integer... summonerIds) {
 		HashMap<Integer, String> returnValue = new HashMap<>();
 		try {
 			int id = client.invoke("summonerService", "getSummonerNames",
@@ -85,7 +85,6 @@ public class SummonerService extends APIService {
 			TypedObject result = client.getResult(id);
 			TypedObject toMatchStats = result.getTO("data").getTO("body")
 					.getTO("gameStatistics");
-			System.out.println(toMatchStats);
 			for (Object o : toMatchStats.getArray("array")) {
 				MatchStats stats = parseMatchStats(o);
 				stats.setSummonerName(name);
@@ -119,24 +118,25 @@ public class SummonerService extends APIService {
 		int ownTeamId = toStats.getInt("teamId");
 		int counterOwn = 0;
 		int counterEnemy = 0;
+		List<Integer> player = new ArrayList<>();
 		for (Object oFellowPlayer : toStats.getTO("fellowPlayers").getArray(
 				"array")) {
-			
+			player.add(((TypedObject) oFellowPlayer).getInt("summonerId"));
 		}
+		HashMap<Integer, String> summoners = getSummonerNameBySummonerId(player
+				.toArray(new Integer[] {}));
 		for (Object oFellowPlayer : toStats.getTO("fellowPlayers").getArray(
 				"array")) {
 			TypedObject toFellowPlayer = (TypedObject) oFellowPlayer;
 			if (toFellowPlayer.getInt("teamId") == ownTeamId) {
 				stats.getOwnTeam()[counterOwn] = new FellowPlayer(
-						getSummonerNameBySummonerId(toFellowPlayer
-								.getInt("summonerId")),
+						summoners.get(toFellowPlayer.getInt("summonerId")),
 						ChampionList.getChampionById(toFellowPlayer
 								.getInt("championId")));
 				counterOwn++;
 			} else {
 				stats.getEnemyTeam()[counterEnemy] = new FellowPlayer(
-						getSummonerNameBySummonerId(toFellowPlayer
-								.getInt("summonerId")),
+						summoners.get(toFellowPlayer.getInt("summonerId")),
 						ChampionList.getChampionById(toFellowPlayer
 								.getInt("championId")));
 				counterEnemy++;

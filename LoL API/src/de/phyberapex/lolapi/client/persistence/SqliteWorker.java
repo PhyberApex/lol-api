@@ -74,68 +74,70 @@ public class SqliteWorker implements Runnable {
 							} else {
 								stmt.setInt(5 + i, 0);
 								i++;
+								stmt.setString(5 + i, "");
 							}
 						}
 						for (int i = 0; i < s.getEnemyTeam().length * 2; i++) {
 							int index = Math.round(new Long(i)/2L);
 							if (s.getEnemyTeam()[index] != null) {
-								stmt.setInt(9 + i, s.getEnemyTeam()[index]
+								stmt.setInt(13 + i, s.getEnemyTeam()[index]
 										.getChampion().getId());
 								i++;
-								stmt.setString(9 + i,
+								stmt.setString(13 + i,
 										s.getEnemyTeam()[index].getSummonerName());
 							} else {
-								stmt.setInt(9 + i, 0);
+								stmt.setInt(13 + i, 0);
 								i++;
+								stmt.setString(13 + i, "");
 							}
 						}
-						stmt.setInt(14, s.getSpell1().getId());
-						stmt.setInt(15, s.getSpell2().getId());
-						stmt.setInt(16, s.getPing());
-						stmt.setInt(17, s.getAmountPremade());
-						stmt.setInt(18, s.getIpEarned());
-						stmt.setInt(19, s.getEloChange());
-						stmt.setLong(20, s.getCreateDate().getTime());
-						stmt.setString(21, s.getGameMode().toString());
+						stmt.setInt(23, s.getSpell1().getId());
+						stmt.setInt(24, s.getSpell2().getId());
+						stmt.setInt(25, s.getPing());
+						stmt.setInt(26, s.getAmountPremade());
+						stmt.setInt(27, s.getIpEarned());
+						stmt.setInt(28, s.getEloChange());
+						stmt.setLong(29, s.getCreateDate().getTime());
+						stmt.setString(30, s.getGameMode().toString());
 						for (int i = 0; i < s.getItems().length; i++) {
 							if (s.getItems()[i] != null) {
-								stmt.setInt(22 + i, s.getItems()[i].getId());
+								stmt.setInt(31 + i, s.getItems()[i].getId());
 							} else {
-								stmt.setInt(22 + i, 0);
+								stmt.setInt(31 + i, 0);
 							}
 						}
-						stmt.setInt(28, s.getGoldEarned());
-						stmt.setInt(29, s.getLevel());
-						stmt.setInt(30, s.getDmgDealt());
-						stmt.setInt(31, s.getMagicDmgDealtToChamps());
-						stmt.setInt(32, s.getPhysicalDmgDealtToChamps());
-						stmt.setInt(33, s.getTrueDmgToChamps());
-						stmt.setInt(34, s.getTotalDmgDealtToChamps());
-						stmt.setInt(35, s.getLargestCrit());
-						stmt.setInt(36, s.getLargestMultikill());
-						stmt.setInt(37, s.getLargestKillingSpree());
-						stmt.setInt(38, s.getCrowdControlDealt());
-						stmt.setInt(39, s.getOwnJungleMinionsKilled());
-						stmt.setInt(40, s.getSightWardsBought());
-						stmt.setInt(41, s.getVisionWardsBought());
-						stmt.setInt(42, s.getWardsKilled());
-						stmt.setInt(43, s.getWardsPlaced());
-						stmt.setInt(44, s.getPhysicalDmgTaken());
-						stmt.setInt(45, s.getMagicDmgTaken());
-						stmt.setInt(46, s.getTrueDmgTaken());
-						stmt.setInt(47, s.getTotalDmgTaken());
-						stmt.setInt(48, s.getTotalHeal());
-						stmt.setInt(49, s.getTimeSpentDead());
-						stmt.setInt(50, s.getDeaths());
-						stmt.setInt(51, s.getKills());
-						stmt.setInt(52, s.getAssists());
-						stmt.setInt(53, s.getMinionsKilled());
-						stmt.setInt(54, s.getNeutralMinionsKilled());
-						stmt.setInt(55, s.getTurretsKilled());
-						stmt.setInt(56, s.getBarracksKilled());
-						stmt.setString(57, s.getQueueType().name());
-						stmt.setInt(58, s.getMap().getId());
-						stmt.setBoolean(59, s.isLeaver());
+						stmt.setInt(37, s.getGoldEarned());
+						stmt.setInt(38, s.getLevel());
+						stmt.setInt(39, s.getDmgDealt());
+						stmt.setInt(40, s.getMagicDmgDealtToChamps());
+						stmt.setInt(41, s.getPhysicalDmgDealtToChamps());
+						stmt.setInt(42, s.getTrueDmgToChamps());
+						stmt.setInt(43, s.getTotalDmgDealtToChamps());
+						stmt.setInt(44, s.getLargestCrit());
+						stmt.setInt(45, s.getLargestMultikill());
+						stmt.setInt(46, s.getLargestKillingSpree());
+						stmt.setInt(47, s.getCrowdControlDealt());
+						stmt.setInt(48, s.getOwnJungleMinionsKilled());
+						stmt.setInt(49, s.getSightWardsBought());
+						stmt.setInt(50, s.getVisionWardsBought());
+						stmt.setInt(51, s.getWardsKilled());
+						stmt.setInt(52, s.getWardsPlaced());
+						stmt.setInt(53, s.getPhysicalDmgTaken());
+						stmt.setInt(54, s.getMagicDmgTaken());
+						stmt.setInt(55, s.getTrueDmgTaken());
+						stmt.setInt(56, s.getTotalDmgTaken());
+						stmt.setInt(57, s.getTotalHeal());
+						stmt.setInt(58, s.getTimeSpentDead());
+						stmt.setInt(59, s.getDeaths());
+						stmt.setInt(60, s.getKills());
+						stmt.setInt(61, s.getAssists());
+						stmt.setInt(62, s.getMinionsKilled());
+						stmt.setInt(63, s.getNeutralMinionsKilled());
+						stmt.setInt(64, s.getTurretsKilled());
+						stmt.setInt(65, s.getBarracksKilled());
+						stmt.setString(66, s.getQueueType().name());
+						stmt.setInt(67, s.getMap().getId());
+						stmt.setBoolean(68, s.isLeaver());
 						stmt.execute();
 					}
 				}
