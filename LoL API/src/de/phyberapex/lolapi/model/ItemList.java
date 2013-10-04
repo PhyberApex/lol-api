@@ -11,17 +11,17 @@ import de.phyberapex.base.FileHelper;
 
 public class ItemList {
 
-	private static ArrayList<Item> allItems = new ArrayList<>();
+	private ArrayList<Item> allItems = new ArrayList<>();
 
-	static {
+	public ItemList() {
 		parseJSON();
 	}
 
-	public static ArrayList<Item> getAllItems() {
+	public ArrayList<Item> getAllItems() {
 		return allItems;
 	}
 
-	private static void parseJSON() {
+	private void parseJSON() {
 		File championFolder = new File("resource/json/items");
 		if (championFolder.isDirectory()) {
 			for (File championFile : championFolder.listFiles()) {
@@ -39,7 +39,7 @@ public class ItemList {
 		}
 	}
 
-	public static Item getItemById(int id) {
+	public Item getItemById(int id) {
 		Item returnValue = null;
 		for (Item item : allItems) {
 			if (item.getId() == id) {

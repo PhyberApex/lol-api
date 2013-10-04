@@ -11,17 +11,17 @@ import de.phyberapex.base.FileHelper;
 
 public class SummonerSpellList {
 
-	private static ArrayList<SummonerSpell> allSpells = new ArrayList<>();
+	private ArrayList<SummonerSpell> allSpells = new ArrayList<>();
 
-	static {
+	public SummonerSpellList() {
 		parseJSON();
 	}
 
-	public static ArrayList<SummonerSpell> getAllSpells() {
+	public ArrayList<SummonerSpell> getAllSpells() {
 		return allSpells;
 	}
 
-	private static void parseJSON() {
+	private void parseJSON() {
 		File championFolder = new File("resource/json/spells");
 		if (championFolder.isDirectory()) {
 			for (File championFile : championFolder.listFiles()) {
@@ -40,7 +40,7 @@ public class SummonerSpellList {
 		}
 	}
 
-	public static SummonerSpell getSpellById(int id) {
+	public SummonerSpell getSpellById(int id) {
 		SummonerSpell returnValue = null;
 		for (SummonerSpell spell : allSpells) {
 			if (spell.getId() == id) {
