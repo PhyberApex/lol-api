@@ -40,7 +40,11 @@ public class SummonerService extends APIService {
 	}
 
 	public HashMap<Integer, String> getSummonerNameBySummonerId(
-			Integer... summonerIds) {
+			Integer... summonerIds) throws IOException {
+		if (!client.isConnected()) {
+			throw new IOException(
+					"Client not connected. This method needs a connected client.");
+		}
 		HashMap<Integer, String> returnValue = new HashMap<>();
 		try {
 			int id = client.invoke("summonerService", "getSummonerNames",
@@ -59,47 +63,44 @@ public class SummonerService extends APIService {
 		return returnValue;
 	}
 
-	public SummonerInfo getSummonerInfoByName(String name) {
+	public SummonerInfo getSummonerInfoByName(String name) throws IOException {
+		if (!client.isConnected()) {
+			throw new IOException(
+					"Client not connected. This method needs a connected client.");
+		}
 		SummonerInfo returnValue = null;
-		try {
-			int id = client.invoke("summonerService", "getSummonerByName",
-					new Object[] { name });
-			TypedObject result = client.getResult(id);
-			TypedObject resultData = result.getTO("data").getTO("body");
-			returnValue = new SummonerInfo(resultData.getInt("summonerLevel"),
-					resultData.getInt("acctId"),
-					resultData.getInt("summonerId"),
-					resultData.getString("name"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		int id = client.invoke("summonerService", "getSummonerByName",
+				new Object[] { name });
+		TypedObject result = client.getResult(id);
+		TypedObject resultData = result.getTO("data").getTO("body");
+		returnValue = new SummonerInfo(resultData.getInt("summonerLevel"),
+				resultData.getInt("acctId"), resultData.getInt("summonerId"),
+				resultData.getString("name"));
 		return returnValue;
 	}
 
-	public ArrayList<MatchStats> getLastMatchStatsByName(String name) {
+	public ArrayList<MatchStats> getLastMatchStatsByName(String name)
+			throws IOException {
+		if (!client.isConnected()) {
+			throw new IOException(
+					"Client not connected. This method needs a connected client.");
+		}
 		ArrayList<MatchStats> returnValue = new ArrayList<>();
-		try {
-			int id = client.invoke("playerStatsService", "getRecentGames",
-					new Object[] { getSummonerInfoByName(name).getAccountId() });
-			TypedObject result = client.getResult(id);
-			TypedObject toMatchStats = result.getTO("data").getTO("body")
-					.getTO("gameStatistics");
-			System.out.println(result);
-			for (Object o : toMatchStats.getArray("array")) {
-				MatchStats stats = parseMatchStats(o);
-				stats.setSummonerName(name);
-				returnValue.add(stats);
-
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		int id = client.invoke("playerStatsService", "getRecentGames",
+				new Object[] { getSummonerInfoByName(name).getAccountId() });
+		TypedObject result = client.getResult(id);
+		TypedObject toMatchStats = result.getTO("data").getTO("body")
+				.getTO("gameStatistics");
+		System.out.println(result);
+		for (Object o : toMatchStats.getArray("array")) {
+			MatchStats stats = parseMatchStats(o);
+			stats.setSummonerName(name);
+			returnValue.add(stats);
 		}
 		return returnValue;
 	}
 
-	private MatchStats parseMatchStats(Object o) {
+	private MatchStats parseMatchStats(Object o) throws IOException {
 		MatchStats stats = new MatchStats();
 		TypedObject toStats = (TypedObject) o;
 		stats.setGameId(toStats.getLong("gameId"));
