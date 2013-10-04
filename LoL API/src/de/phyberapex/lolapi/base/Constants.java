@@ -11,7 +11,10 @@ import de.phyberapex.base.MainConstants;
 public class Constants extends MainConstants {
 
 	/* ==== Basic stuff ==== */
-	public static Properties BASIC_INFO;
+	public static final String APP_NAME = "LoL-API";
+	public static final String APP_VERSION = "0.01";
+	public static final String APP_AUTOR = "Phyber.Apex";
+	public static final boolean DEV_VERSION = true;
 
 	/* ==== LoL login stuff ==== */
 	public static Properties LOL_LOGIN_INFO;
@@ -75,7 +78,7 @@ public class Constants extends MainConstants {
 
 	static {
 		try {
-			BASIC_INFO = FileHelper.readXMLPropertiesFile("lol_login.xml");
+			LOL_LOGIN_INFO = FileHelper.readXMLPropertiesFile("lol_login.xml");
 
 		} catch (IOException e) {
 			e.printStackTrace();

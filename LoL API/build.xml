@@ -3,11 +3,33 @@
 	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
 	<!--ANT 1.7 is required                                        -->
 	<target name="create_api_only">
-		<jar destfile="build/LoL-API.jar">
+		<jar destfile="build/LoL-API.jar" basedir="bin/" excludes="**/example/** **/client/gui/** **/persistance/**">
 			<manifest>
+				<attribute name="Main-Class" value="de.phyberapex.lolapi.main.APIStart" />
 				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/rtmps.jar" />
 			</manifest>
-			<fileset excludes="**lolapi/main**class, **lolapi/persistance**class" dir="bin" />
+		</jar>
+		<delete dir="build/lib" />
+		<mkdir dir="build/lib" />
+		<copy file="lol_login.xml" todir="build/" />
+		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
+		<copy file="libs/rtmps.jar" todir="build/lib" />
+		<copy todir="build/champions">
+			<fileset dir="champions" />
+		</copy>
+		<copy todir="build/items">
+			<fileset dir="items" />
+		</copy>
+		<copy todir="build/spells">
+			<fileset dir="spells" />
+		</copy>
+	</target>
+	<target name="create_api_with_gui">
+		<jar destfile="build/LoL-API-GUI.jar" basedir="bin/" excludes="**/example/** **/persistance/**">
+			<manifest>
+				<attribute name="Main-Class" value="de.phyberapex.lolapi.gui.GUIStart" />
+				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/rtmps.jar" />
+			</manifest>
 		</jar>
 		<delete dir="build/lib" />
 		<mkdir dir="build/lib" />
@@ -25,11 +47,11 @@
 		</copy>
 	</target>
 	<target name="api_with_persistance">
-		<jar destfile="build/LoL-API-Persistance.jar">
+		<jar destfile="build/LoL-API-Persistance.jar" basedir="bin/" excludes="**/example/**">
 			<manifest>
+				<attribute name="Main-Class" value="de.phyberapex.lolapi.persistance.gui.GUIStart" />
 				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/sqlite-jdbc-3.7.2.jar lib/rtmps.jar" />
 			</manifest>
-			<fileset excludes="**lolapi/main**class" dir="bin" />
 		</jar>
 		<delete dir="build/lib" />
 		<mkdir dir="build/lib" />
