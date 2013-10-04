@@ -2,7 +2,7 @@ package de.phyberapex.lolapi.info;
 
 public enum GameMap {
 
-	HOWLING_ABYSS(12, "Howling Abyss"), SUMMONERS_RIFT(1, "Summoners Rift"), CRYSTAL_SCAR(1, "Crystal Scar"), TWISTED_TREELINE(1, "Twisted Treeline");
+	HOWLING_ABYSS(12, "Howling Abyss"), SUMMONERS_RIFT(1, "Summoners Rift"), CRYSTAL_SCAR(1, "Crystal Scar"), TWISTED_TREELINE(10, "Twisted Treeline");
 
 	private int mapId;
 	private String name;

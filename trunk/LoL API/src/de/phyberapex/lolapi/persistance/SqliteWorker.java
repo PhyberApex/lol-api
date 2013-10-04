@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.client.persistence;
+package de.phyberapex.lolapi.persistance;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,8 +23,8 @@ public class SqliteWorker implements Runnable {
 	private boolean gathering = false;
 	private APIClient client;
 
-	public SqliteWorker(SaveConfiguration[] configs, int refreshTimer,
-			APIClient client) {
+	public SqliteWorker(int refreshTimer, APIClient client,
+			SaveConfiguration... configs) {
 		this.refreshTimer = refreshTimer;
 		this.configs = Arrays.asList(configs);
 		this.client = client;
@@ -59,7 +59,7 @@ public class SqliteWorker implements Runnable {
 						.prepareStatement("INSERT INTO matchstats (game_id, summonername, win, ownChampion_id, ownTeamChampion1_id, ownTeamSummoner1, ownTeamChampion2_id, ownTeamSummoner2, ownTeamChampion3_id, ownTeamSummoner3, ownTeamChampion4_id, ownTeamSummoner4, enemyTeamChampion1_id, enemyTeamSummoner1, enemyTeamChampion2_id, enemyTeamSummoner2, enemyTeamChampion3_id, enemyTeamSummoner3, enemyTeamChampion4_id, enemyTeamSummoner4, enemyTeamChampion5_id, enemyTeamSummoner5, summonerSpell1_id, summonerSpell2_id, ping, amountPremades, ipearned, eloChange, createDate, gamemode, item1_id, item2_id, item3_id, item4_id, item5_id, item6_id, goldEarned, championLevel, dmgDealt, magicDmgDealtToChamps, physicalDmgDealtToChamps, trueDmgDealtToChamps, totalDmgDealtToChamps, largestCrit, largestMultikill, largestKillingSpree, crowdControlDealt, ownJungleMinionsKilled, sightWardsBought, visionWardsBought, wardsKilled, wardsPlaced, physicalDmgTaken, magicDmgTaken, trueDmgTaken, totalDmgTaken, totalHeal, timeSpentDead, deaths, kills, assists, minionsKilled, neutralMinionsKilled, turretsKilled, baracksKilled, queueType, gameMapId, leaver) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 				for (MatchStats s : stats) {
 					// TODO check if game is to check
-					boolean checkGame = true;
+					boolean checkGame = false;
 					switch (conf.getData()) {
 					case ARAM_CUSTOM:
 						break;
@@ -73,13 +73,16 @@ public class SqliteWorker implements Runnable {
 					case DOM_CUSTOM:
 						break;
 					case DOM_NORMAL:
-						checkGame = s.getQueueType() == QueueType.NORMAL;
+						checkGame = s.getQueueType() == QueueType.NORMAL
+								&& s.getGameMode() == GameMode.ODIN;
 						break;
 					case SR_BOTS:
 						checkGame = s.getQueueType() == QueueType.BOT
 								&& s.getMap() == GameMap.SUMMONERS_RIFT;
 						break;
 					case SR_CUSTOM:
+						checkGame = s.getQueueType() == QueueType.NONE
+								&& s.getMap() == GameMap.SUMMONERS_RIFT;
 						break;
 					case SR_NORMAL:
 						checkGame = s.getQueueType() == QueueType.NORMAL;
@@ -93,6 +96,8 @@ public class SqliteWorker implements Runnable {
 								&& s.getMap() == GameMap.TWISTED_TREELINE;
 						break;
 					case TT_CUSTOM:
+						checkGame = s.getQueueType() == QueueType.NONE
+								&& s.getMap() == GameMap.TWISTED_TREELINE;
 						break;
 					case TT_NORMAL:
 						checkGame = s.getQueueType() == QueueType.NORMAL_3x3;

@@ -85,6 +85,7 @@ public class SummonerService extends APIService {
 			TypedObject result = client.getResult(id);
 			TypedObject toMatchStats = result.getTO("data").getTO("body")
 					.getTO("gameStatistics");
+			System.out.println(result);
 			for (Object o : toMatchStats.getArray("array")) {
 				MatchStats stats = parseMatchStats(o);
 				stats.setSummonerName(name);
