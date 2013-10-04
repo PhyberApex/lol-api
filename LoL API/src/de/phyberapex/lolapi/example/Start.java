@@ -17,12 +17,13 @@ public class Start {
 		// Usage of API
 		try {
 			client = new APIClient();
+			client.connect();
 			ArrayList<MatchStats> stats = client.getSummonerService()
 					.getLastMatchStatsByName("CaptainManiac");
 			for (MatchStats stat : stats) {
 				System.out.println(stat);
 			}
-			// Usage of API to store data
+			// Usage of persistance to store data
 			SaveConfiguration config1 = new SaveConfiguration(
 					SaveData.SR_RANKED, "exodragon");
 			SaveConfiguration config2 = new SaveConfiguration(

@@ -11,8 +11,14 @@ public class APIClient extends LoLRTMPSClient {
 
 	private SummonerService summonerService;
 
-	public APIClient() throws IOException {
-		super(LOL_SERVER, LOL_CLIENT_VERSION, LOL_LOGIN, LOL_PASSWORD);
+	public APIClient() {
+		super(parseServer(LOL_LOGIN_INFO.getProperty("SERVER")), LOL_LOGIN_INFO
+				.getProperty("LOL_CLIENT_VERSION"), LOL_LOGIN_INFO
+				.getProperty("LOGINNAME"), LOL_LOGIN_INFO
+				.getProperty("LOL_PASSWORD"));
+	}
+
+	public void connect() throws IOException {
 		this.connectAndLogin();
 		summonerService = new SummonerService(this);
 	}
