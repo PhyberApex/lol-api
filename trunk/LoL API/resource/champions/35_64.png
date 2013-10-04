@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+	<meta name="description" content="Create &amp; discover new Champion builds/strategies, check your Summoner statistics and try our powerful LoL charts." />
+	<meta name="keywords" content="league of legends,lol,champion guides,champion strategy,champion builds,guides,builds,summoner stats,lol summoners,top summoners,best champions" />
+	<title>League of Legends Summoner Stats &amp; Champion Build Guides - LolKing</title>
+	
+		    				
+    <link rel="shortcut icon" href="http://lkstatic.zamimg.com/favicon.ico" />	
+    
+	<style>
+		
+		* { font-family: 'Open Sans', arial; padding: 0; margin: 0; }
+		body { background: #333; }
+		#announcement {
+			width: 400px;
+			margin: 0 auto 20px;
+			padding: 20px;
+			background: #1A1A1A;
+			border-radius: 6px;
+			box-shadow: 0 0 2px #000 inset;		
+		}
+
+		h3 {
+			font: bold 22px 'Trebuchet Ms';
+			margin-bottom: 10px;
+			color: #FFDB4C;
+		}
+
+		#quote {
+			margin-top: 60px; 
+			color: #666; 
+			font: 32px 'Gloria Hallelujah';
+			text-align: center;
+			color: #FFDB4C;
+		}
+
+		#quote img {
+			border-radius: 6px;
+			box-shadow: 0 0 3px #000;
+			margin-bottom: 8px;
+			margin-left: 10px;
+		}
+
+		p {
+			margin-bottom: 10px; 
+			color: #CCC; 
+			font-size: 14px;			
+		}
+
+		.urf-logo {
+			margin-top: 20px;
+			display: block;
+			margin: 0 auto;
+			padding-left: 50px;			
+		}
+		
+		#container {
+			margin-top: 30px; 
+			padding: 20px;			
+		}
+
+		a {
+			color: #EABC00;
+		}
+
+		a:hover {
+			color: #FFDB4C;
+		}
+
+	</style>
+	
+	<link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+	<script>
+
+	$(function(){
+
+		var quotes = [{"champion_id":12,"quote":"\"You can't milk those!\" -Alistar"},{"champion_id":103,"quote":"\"Don't you trust me?\" -Ahri"},{"champion_id":32,"quote":"\"Come play with me.\" -Amumu"},{"champion_id":1,"quote":"\"Have you seen my bear Tibbers?\" -Annie"},{"champion_id":81,"quote":"\"Who needs a map?!\" -Ezreal"},{"champion_id":33,"quote":"\\Ok.\" -Rammus"},{"champion_id":64,"quote":"\"Master yourself, master the enemy.\" -Lee Sin"},{"champion_id":119,"quote":"\"Welcome to the League of Draven.\" -Draven"},{"champion_id":5,"quote":"\"Here's a tip, and a spear behind it!\" -Xin Zhao"},{"champion_id":25,"quote":"\"We'll bring them pain.\" -Morgana"},{"champion_id":75,"quote":"\"The cycle of life and death continues. We will live, they will die.\" -Nasus"},{"champion_id":36,"quote":"\"Mundo will go where he pleases! (slurps)\" -Dr. Mundo"},{"champion_id":79,"quote":"\"I'll drink you under the table!\" -Gragas"},{"champion_id":41,"quote":"\"Shiver me timbers!\" -Gangplank"},{"champion_id":41,"quote":"\"Yo ho ho, and a bottle of... rum!\" -Gangplank"},{"champion_id":82,"quote":"\"You only need to click once, fool!\" -Mordekaiser"},{"champion_id":24,"quote":"\"Who wants a piece of the champ?!\" -Jax"},{"champion_id":74,"quote":"\"Yes, yes, hurry, I have important work to get back to.\" -Heimerdinger"},{"champion_id":31,"quote":"\"The daylight! It burns!\" -Cho'Gath"},{"champion_id":104,"quote":"\"Dead man walkin'.\" -Graves"},{"champion_id":23,"quote":"\"My right arm is a lot stronger than my left arm!\" -Tryndamere"},{"champion_id":18,"quote":"\"Is that a rocket in your pocket?\" -Tristana"},{"champion_id":29,"quote":"\"Oh, what's that smell? Oh, it's me...\" -Twitch"},{"champion_id":17,"quote":"\"Captain Teemo on duty.\" -Teemo"},{"champion_id":17,"quote":"\"I'll scout ahead!\" -Teemo"},{"champion_id":99,"quote":"\"Tactical decision, summoner!\" -Lux"},{"champion_id":69,"quote":"\"Don't you find me... beautiful?\" -Cassiopeia"},{"champion_id":42,"quote":"\"I'm on it, blackshoe!\" -Corki"},{"champion_id":56,"quote":"\"Embrace the darkness.\" -Nocturne"},{"champion_id":117,"quote":"\"That tasted purple!\" -Lulu"},{"champion_id":11,"quote":"\"My blade is yours.\" -Master Yi"},{"champion_id":20,"quote":"\"Don't make the yeti angry. You won't like him when he's angry!\" -Nunu"},{"champion_id":63,"quote":"\"Ready to set the world on fire? Heheheh...\" -Brand"},{"champion_id":53,"quote":"\"Fired up and ready to serve.\" -Blitzcrank"},{"champion_id":35,"quote":"\"How about a magic trick?\" -Shaco"},{"champion_id":67,"quote":"\"Let us hunt those who have fallen to darkness.\" -Vayne"},{"champion_id":44,"quote":"\"Gems? Gems are truly outrageous. They are truly, truly, truly outrageous.\" -Taric"},{"champion_id":48,"quote":"\"Time to troll!\" -Trundle"},{"champion_id":4,"quote":"\"Lady Luck is smilin'.\" -Twisted Fate"}];
+		var randomQuote = quotes[Math.floor(Math.random()*quotes.length)];
+
+		$('#quote').html(randomQuote.quote + '<img style="width: 42px; vertical-align: middle;" src="http://lkimg.zamimg.com/shared/riot/images/champions/' + randomQuote.champion_id + '_64.png">');
+
+	});
+
+	</script>
+	
+</head>
+
+<body>
+
+	<noscript>
+		<div id="noscript-bg"></div>
+		<div id="noscript-text">
+			<div id="noscript-text-img"></div>
+			<b>This site makes extensive use of JavaScript.</b><br />Please <a href="https://www.google.com/support/adsense/bin/answer.py?answer=12654" target="_blank">enable JavaScript</a> in your browser.
+		</div>
+	</noscript>
+
+	<div id="container">
+	
+		<div id="container_inner">
+
+			<div style="overflow: hidden;">
+
+				<div style="text-align: center;"><img src="http://lkimg.zamimg.com/images/logo-text.png"></div>
+
+				<img src="http://lkimg.zamimg.com/images/logo-urf.png" class="urf-logo">
+
+				<div id="announcement">
+				
+					<h3>Maintenance</h3>
+						
+					<p>Yep, Urf broke it. We are performing maintenance and the should be back online shortly! Thank you for being patient.</p>
+					<p>For updates, please check our <a href="https://twitter.com/LolKingDotNet">Twitter</a> and <a href="https://www.facebook.com/LoLking">Facebook</a>.</p>
+					
+				</div>
+
+				<div id="quote"></div>
+
+			</div>
+
+		</div>
+		
+	</div>
+	
+</body>
+	
+</html>
