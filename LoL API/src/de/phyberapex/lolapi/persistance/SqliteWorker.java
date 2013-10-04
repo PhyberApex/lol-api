@@ -1,5 +1,6 @@
 package de.phyberapex.lolapi.persistance;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +37,13 @@ public class SqliteWorker implements Runnable {
 		double diffInMinutes = refreshTimer + 1;
 		while (this.gathering) {
 			if (diffInMinutes > refreshTimer) {
-				gatherData();
+				try {
+					gatherData();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Could not gather data");
+					e.printStackTrace();
+				}
 				lastRun = System.currentTimeMillis();
 			} else {
 				try {
@@ -50,7 +57,7 @@ public class SqliteWorker implements Runnable {
 		}
 	}
 
-	private void gatherData() {
+	private void gatherData() throws IOException {
 		try {
 			for (SaveConfiguration conf : configs) {
 				ArrayList<MatchStats> stats = client.getSummonerService()
