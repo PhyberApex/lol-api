@@ -1,6 +1,6 @@
 package de.phyberapex.lolapi.gui;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -24,8 +24,8 @@ public class StatusBar extends JPanel {
 	}
 
 	private void layoutGUI() {
-		this.setLayout(new FlowLayout());
-		this.add(statusText, FlowLayout.LEFT);
+		this.setLayout(new BorderLayout());
+		this.add(statusText, BorderLayout.LINE_START);
 	}
 
 	public void setStatusText(String statusText) {
