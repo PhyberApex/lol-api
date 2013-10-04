@@ -18,8 +18,8 @@ public class APIClient extends LoLRTMPSClient {
 				.getProperty("LOL_PASSWORD"));
 	}
 
-	public void connect() throws IOException {
-		this.connectAndLogin();
+	public void connectAndLogin() throws IOException {
+		super.connectAndLogin();
 		summonerService = new SummonerService(this);
 	}
 

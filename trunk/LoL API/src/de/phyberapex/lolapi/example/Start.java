@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import de.phyberapex.lolapi.client.APIClient;
+import de.phyberapex.lolapi.client.service.SummonerService;
 import de.phyberapex.lolapi.info.MatchStats;
 import de.phyberapex.lolapi.persistance.SaveConfiguration;
 import de.phyberapex.lolapi.persistance.SaveData;
@@ -17,12 +18,19 @@ public class Start {
 		// Usage of API
 		try {
 			client = new APIClient();
-			client.connect();
-			ArrayList<MatchStats> stats = client.getSummonerService()
+			client.connectAndLogin();;
+			// Usage of summonerservice
+			SummonerService sumserv = client.getSummonerService();
+			// Usage of getMatchStatsByName
+			ArrayList<MatchStats> stats = sumserv
 					.getLastMatchStatsByName("CaptainManiac");
 			for (MatchStats stat : stats) {
 				System.out.println(stat);
 			}
+			// Usage of getSummonerInfoByName
+			System.out.println("Level of Exodragon: "
+					+ sumserv.getSummonerInfoByName("exodragon").getLevel());
+
 			// Usage of persistance to store data
 			SaveConfiguration config1 = new SaveConfiguration(
 					SaveData.SR_RANKED, "exodragon");
