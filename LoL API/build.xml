@@ -14,14 +14,8 @@
 		<copy file="lol_login.xml" todir="build/" />
 		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
 		<copy file="libs/rtmps.jar" todir="build/lib" />
-		<copy todir="build/champions">
-			<fileset dir="champions" />
-		</copy>
-		<copy todir="build/items">
-			<fileset dir="items" />
-		</copy>
-		<copy todir="build/spells">
-			<fileset dir="spells" />
+		<copy todir="build/resource">
+			<fileset dir="resource" excludes="**/img/**" />
 		</copy>
 	</target>
 	<target name="create_api_with_gui">
@@ -36,14 +30,8 @@
 		<copy file="lol_login.xml" todir="build/" />
 		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
 		<copy file="libs/rtmps.jar" todir="build/lib" />
-		<copy todir="build/champions">
-			<fileset dir="champions" />
-		</copy>
-		<copy todir="build/items">
-			<fileset dir="items" />
-		</copy>
-		<copy todir="build/spells">
-			<fileset dir="spells" />
+		<copy todir="build/resource">
+			<fileset dir="resource" excludes="**/img/**" />
 		</copy>
 	</target>
 	<target name="api_with_persistance">
@@ -60,14 +48,8 @@
 		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
 		<copy file="libs/sqlite-jdbc-3.7.2.jar" todir="build/lib" />
 		<copy file="libs/rtmps.jar" todir="build/lib" />
-		<copy todir="build/champions">
-			<fileset dir="champions" />
-		</copy>
-		<copy todir="build/items">
-			<fileset dir="items" />
-		</copy>
-		<copy todir="build/spells">
-			<fileset dir="spells" />
+		<copy todir="build/resource">
+			<fileset dir="resource" />
 		</copy>
 	</target>
 </project>

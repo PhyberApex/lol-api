@@ -22,7 +22,7 @@ public class SummonerSpellList {
 	}
 
 	private static void parseJSON() {
-		File championFolder = new File("spells");
+		File championFolder = new File("resource/json/spells");
 		if (championFolder.isDirectory()) {
 			for (File championFile : championFolder.listFiles()) {
 				try {
