@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,7 +27,7 @@ public class ChampionServicePanel extends JScrollPane {
 	private JPanel allChampsPanel, champByIdPanel;
 	private JTextField champByIdTextField;
 	private JButton allChampsButton, champByIdButton;
-	private JPanel champByIdResultPanel;
+	private JLabel champByIdResultLabel;
 	private JList<Champion> allChampsResultList;
 
 	public ChampionServicePanel() {
@@ -63,7 +64,6 @@ public class ChampionServicePanel extends JScrollPane {
 							allChampsResultList.setListData(getChampService()
 									.getAllChampions().toArray(
 											new Champion[] {}));
-							;
 							return null;
 						}
 
@@ -86,10 +86,31 @@ public class ChampionServicePanel extends JScrollPane {
 			this.champByIdPanel.setBorder(BorderFactory
 					.createTitledBorder("getChampById"));
 			this.champByIdButton = new JButton("Get result");
+			this.champByIdButton.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					new SwingWorker<String, String>() {
+
+						@Override
+						protected String doInBackground() throws Exception {
+							champByIdResultLabel.setText(getChampService()
+									.getChampionById(
+											Integer.parseInt(champByIdTextField
+													.getText())).getName());
+							return null;
+						}
+
+					}.execute();
+				}
+			});
 			this.champByIdTextField = new JTextField();
 			this.champByIdTextField.setPreferredSize(new Dimension(120, 25));
+			this.champByIdResultLabel = new JLabel("Champion");
 			this.champByIdPanel.add(champByIdTextField);
 			this.champByIdPanel.add(champByIdButton);
+			this.champByIdPanel.add(champByIdResultLabel);
+
 		}
 		return this.champByIdPanel;
 	}
