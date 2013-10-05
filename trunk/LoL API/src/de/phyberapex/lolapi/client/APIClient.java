@@ -22,14 +22,14 @@ public class APIClient extends LoLRTMPSClient {
 				.getProperty("LOL_CLIENT_VERSION"), LOL_LOGIN_INFO
 				.getProperty("LOGINNAME"), LOL_LOGIN_INFO
 				.getProperty("LOL_PASSWORD"));
+		championService = new ChampionService(this);
+		itemService = new ItemService(this);
+		summonerSpellService = new SummonerSpellService(this);
 	}
 
 	public void connectAndLogin() throws IOException {
 		super.connectAndLogin();
 		summonerService = new SummonerService(this);
-		championService = new ChampionService(this);
-		itemService = new ItemService(this);
-		summonerSpellService = new SummonerSpellService(this);
 	}
 
 	public SummonerService getSummonerService() {

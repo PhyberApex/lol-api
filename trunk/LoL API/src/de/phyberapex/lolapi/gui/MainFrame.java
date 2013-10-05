@@ -45,6 +45,10 @@ public class MainFrame extends JFrame {
 		this.statusBar.setStatusText(status);
 	}
 
+	public APIClient getClient(){
+		return this.apiClient;
+	}
+	
 	public static synchronized MainFrame getInstance() {
 		if (instance == null) {
 			instance = new MainFrame();
@@ -53,11 +57,6 @@ public class MainFrame extends JFrame {
 	}
 
 	public void update() {
-		if (apiClient.isConnected()) {
-
-		} else {
-
-		}
-
+		content.setConnected(apiClient.isConnected());
 	}
 }
