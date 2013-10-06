@@ -8,6 +8,5 @@ public class GUIStart {
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		MainFrame.getInstance().setVisible(true);
-		;
 	}
 }
