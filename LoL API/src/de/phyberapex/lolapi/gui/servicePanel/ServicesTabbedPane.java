@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.gui;
+package de.phyberapex.lolapi.gui.servicePanel;
 
 import javax.swing.JTabbedPane;
 
