@@ -7,6 +7,7 @@ import static de.phyberapex.lolapi.base.Constants.*;
 import javax.swing.JFrame;
 
 import de.phyberapex.lolapi.client.APIClient;
+import de.phyberapex.lolapi.gui.servicePanel.ServicesTabbedPane;
 
 public class MainFrame extends JFrame {
 
