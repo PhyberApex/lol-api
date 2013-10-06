@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.gui.servicePanel;
+package de.phyberapex.lolapi.gui.servicePanel.summonerspell;
 
 import javax.swing.JScrollPane;
 

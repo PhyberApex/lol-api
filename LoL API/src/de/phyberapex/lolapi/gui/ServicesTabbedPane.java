@@ -2,10 +2,10 @@ package de.phyberapex.lolapi.gui;
 
 import javax.swing.JTabbedPane;
 
-import de.phyberapex.lolapi.gui.servicePanel.ChampionServicePanel;
-import de.phyberapex.lolapi.gui.servicePanel.ItemServicePanel;
-import de.phyberapex.lolapi.gui.servicePanel.SummonerServicePanel;
-import de.phyberapex.lolapi.gui.servicePanel.SummonerSpellServicePanel;
+import de.phyberapex.lolapi.gui.servicePanel.champion.ChampionServicePanel;
+import de.phyberapex.lolapi.gui.servicePanel.item.ItemServicePanel;
+import de.phyberapex.lolapi.gui.servicePanel.summoner.SummonerServicePanel;
+import de.phyberapex.lolapi.gui.servicePanel.summonerspell.SummonerSpellServicePanel;
 
 public class ServicesTabbedPane extends JTabbedPane {
 

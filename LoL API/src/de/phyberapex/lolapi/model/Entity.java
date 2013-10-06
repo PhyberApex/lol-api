@@ -1,7 +1,7 @@
 package de.phyberapex.lolapi.model;
 
 public abstract class Entity {
-	
+
 	private int id;
 	private String name;
 
@@ -28,6 +28,6 @@ public abstract class Entity {
 
 	@Override
 	public String toString() {
-		return this.name;
+		return "ID: " + this.id + " Name: " + this.name;
 	}
 }
