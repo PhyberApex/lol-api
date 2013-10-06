@@ -31,9 +31,10 @@ public class ChampionServicePanel extends JScrollPane {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.fill = GridBagConstraints.BOTH;
-		c.weighty = 0.5;
+		c.weighty = 1;
 		c.weightx = 1;
 		this.content.add(new AllChampsPanel(), c);
+		c.weighty = 0;
 		c.gridy = 1;
 		this.content.add(new ChampByIdPanel(), c);
 		this.setViewportView(content);

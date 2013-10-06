@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.gui.servicePanel.champion;
+package de.phyberapex.lolapi.gui.servicePanel.item;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -14,17 +14,17 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingWorker;
 
 import de.phyberapex.lolapi.gui.MainFrame;
-import de.phyberapex.lolapi.model.Champion;
+import de.phyberapex.lolapi.model.Item;
 
-public class AllChampsPanel extends JPanel {
+public class AllItemsPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
 	private JButton getResultButton;
 	private JPanel resultPanel;
-	private JList<Champion> resultList;
+	private JList<Item> resultList;
 
-	public AllChampsPanel() {
+	public AllItemsPanel() {
 		super();
 		createGUI();
 		layoutGUI();
@@ -42,8 +42,8 @@ public class AllChampsPanel extends JPanel {
 					@Override
 					protected String doInBackground() throws Exception {
 						resultList.setListData(MainFrame.getInstance()
-								.getClient().getChampionService()
-								.getAllChampions().toArray(new Champion[] {}));
+								.getClient().getItemService().getAllItems()
+								.toArray(new Item[] {}));
 						return null;
 					}
 
@@ -52,7 +52,7 @@ public class AllChampsPanel extends JPanel {
 		});
 		this.resultPanel = new JPanel();
 		this.resultPanel.setBorder(BorderFactory.createTitledBorder("Result"));
-		this.resultList = new JList<Champion>();
+		this.resultList = new JList<Item>();
 	}
 
 	private void layoutGUI() {

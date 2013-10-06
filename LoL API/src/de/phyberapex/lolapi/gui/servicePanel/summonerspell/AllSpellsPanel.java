@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.gui.servicePanel.champion;
+package de.phyberapex.lolapi.gui.servicePanel.summonerspell;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -14,24 +14,24 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingWorker;
 
 import de.phyberapex.lolapi.gui.MainFrame;
-import de.phyberapex.lolapi.model.Champion;
+import de.phyberapex.lolapi.model.SummonerSpell;
 
-public class AllChampsPanel extends JPanel {
+public class AllSpellsPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
 	private JButton getResultButton;
 	private JPanel resultPanel;
-	private JList<Champion> resultList;
+	private JList<SummonerSpell> resultList;
 
-	public AllChampsPanel() {
+	public AllSpellsPanel() {
 		super();
 		createGUI();
 		layoutGUI();
 	}
 
 	private void createGUI() {
-		this.setBorder(BorderFactory.createTitledBorder("getAllChampions()"));
+		this.setBorder(BorderFactory.createTitledBorder("getAllSpells()"));
 		this.getResultButton = new JButton("Get Result");
 		this.getResultButton.addActionListener(new ActionListener() {
 
@@ -41,9 +41,11 @@ public class AllChampsPanel extends JPanel {
 
 					@Override
 					protected String doInBackground() throws Exception {
-						resultList.setListData(MainFrame.getInstance()
-								.getClient().getChampionService()
-								.getAllChampions().toArray(new Champion[] {}));
+						resultList
+								.setListData(MainFrame.getInstance()
+										.getClient().getSummonerSpellService()
+										.getAllSpells()
+										.toArray(new SummonerSpell[] {}));
 						return null;
 					}
 
@@ -52,7 +54,7 @@ public class AllChampsPanel extends JPanel {
 		});
 		this.resultPanel = new JPanel();
 		this.resultPanel.setBorder(BorderFactory.createTitledBorder("Result"));
-		this.resultList = new JList<Champion>();
+		this.resultList = new JList<SummonerSpell>();
 	}
 
 	private void layoutGUI() {
