@@ -10,6 +10,7 @@ import javax.swing.JMenuItem;
 import javax.swing.SwingWorker;
 
 import de.phyberapex.lolapi.client.APIClient;
+import de.phyberapex.lolapi.gui.servicePanel.LoginInfoDialog;
 
 public class MenuBar extends JMenuBar {
 
@@ -72,6 +73,7 @@ public class MenuBar extends JMenuBar {
 				iDisconnect.setEnabled(false);
 				MainFrame.getInstance().setStatusText(
 						"Successfully disconnected");
+				MainFrame.getInstance().update();
 			}
 		});
 		this.iDisconnect.setEnabled(false);
@@ -94,6 +96,13 @@ public class MenuBar extends JMenuBar {
 		this.add(mFile);
 		this.mEdit = new JMenu("Edit");
 		this.iLoginCreds = new JMenuItem("Login information...");
+		this.iLoginCreds.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new LoginInfoDialog().setVisible(true);
+			}
+		});
 		this.mEdit.add(iLoginCreds);
 		this.add(mEdit);
 	}
