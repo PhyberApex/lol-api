@@ -19,9 +19,9 @@ public class APIClient extends LoLRTMPSClient {
 
 	public APIClient() {
 		super(parseServer(LOL_LOGIN_INFO.getProperty("SERVER")), LOL_LOGIN_INFO
-				.getProperty("LOL_CLIENT_VERSION"), LOL_LOGIN_INFO
+				.getProperty("CLIENT_VERSION"), LOL_LOGIN_INFO
 				.getProperty("LOGINNAME"), LOL_LOGIN_INFO
-				.getProperty("LOL_PASSWORD"));
+				.getProperty("PASSWORD"));
 		championService = new ChampionService(this);
 		itemService = new ItemService(this);
 		summonerSpellService = new SummonerSpellService(this);
