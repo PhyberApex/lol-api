@@ -31,7 +31,7 @@ public class AllItemsPanel extends JPanel {
 	}
 
 	private void createGUI() {
-		this.setBorder(BorderFactory.createTitledBorder("getAllChampions()"));
+		this.setBorder(BorderFactory.createTitledBorder("getAllItems()"));
 		this.getResultButton = new JButton("Get Result");
 		this.getResultButton.addActionListener(new ActionListener() {
 

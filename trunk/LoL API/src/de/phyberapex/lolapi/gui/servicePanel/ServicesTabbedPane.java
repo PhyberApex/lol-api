@@ -23,7 +23,7 @@ public class ServicesTabbedPane extends JTabbedPane {
 	}
 
 	private void createGUI() {
-	//	this.summServPanel = new SummonerServicePanel();
+		this.summServPanel = new SummonerServicePanel();
 		this.champServPanel = new ChampionServicePanel();
 		this.itemServPanel = new ItemServicePanel();
 		this.spellServPanel = new SummonerSpellServicePanel();
