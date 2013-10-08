@@ -2,6 +2,8 @@ package de.phyberapex.lolapi.base;
 
 import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.gvaneyck.rtmp.ServerInfo;
 
@@ -103,7 +105,6 @@ public class Constants extends MainConstants {
 	static {
 		try {
 			LOL_LOGIN_INFO = FileHelper.readXMLPropertiesFile("lol_login.xml");
-
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(0);

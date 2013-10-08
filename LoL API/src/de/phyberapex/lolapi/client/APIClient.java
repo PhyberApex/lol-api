@@ -1,6 +1,7 @@
 package de.phyberapex.lolapi.client;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import com.gvaneyck.rtmp.LoLRTMPSClient;
 
@@ -16,12 +17,14 @@ public class APIClient extends LoLRTMPSClient {
 	private ChampionService championService;
 	private ItemService itemService;
 	private SummonerSpellService summonerSpellService;
+	private Logger logger = Logger.getLogger(APIClient.class.getName());
 
 	public APIClient() {
 		super(parseServer(LOL_LOGIN_INFO.getProperty("SERVER")), LOL_LOGIN_INFO
 				.getProperty("CLIENT_VERSION"), LOL_LOGIN_INFO
 				.getProperty("LOGINNAME"), LOL_LOGIN_INFO
 				.getProperty("PASSWORD"));
+		logger.fine("new instance of APIClient created");
 		championService = new ChampionService(this);
 		itemService = new ItemService(this);
 		summonerSpellService = new SummonerSpellService(this);
