@@ -3,7 +3,7 @@
 	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
 	<!--ANT 1.7 is required                                        -->
 	<target name="create_api_only">
-		<jar destfile="build/LoL-API.jar" basedir="bin/" excludes="**/example/** **/client/gui/** **/persistance/**">
+		<jar destfile="build/LoL-API.jar" basedir="bin/" excludes="**/example/** **/test** **/client/gui/** **/persistance/**">
 			<manifest>
 				<attribute name="Main-Class" value="de.phyberapex.lolapi.main.APIStart" />
 				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/rtmps.jar" />
@@ -19,7 +19,7 @@
 		</copy>
 	</target>
 	<target name="create_api_with_gui">
-		<jar destfile="build/LoL-API-GUI.jar" basedir="bin/" excludes="**/example/** **/persistance/**">
+		<jar destfile="build/LoL-API-GUI.jar" basedir="bin/" excludes="**/example/** **/test** **/persistance/**">
 			<manifest>
 				<attribute name="Main-Class" value="de.phyberapex.lolapi.gui.GUIStart" />
 				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/rtmps.jar" />
@@ -35,7 +35,7 @@
 		</copy>
 	</target>
 	<target name="api_with_persistance">
-		<jar destfile="build/LoL-API-Persistance.jar" basedir="bin/" excludes="**/example/**">
+		<jar destfile="build/LoL-API-Persistance.jar" basedir="bin/" excludes="**/example/** **/test** ">
 			<manifest>
 				<attribute name="Main-Class" value="de.phyberapex.lolapi.persistance.gui.GUIStart" />
 				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/sqlite-jdbc-3.7.2.jar lib/rtmps.jar" />
