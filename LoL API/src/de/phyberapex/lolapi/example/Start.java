@@ -23,7 +23,7 @@ public class Start {
 			SummonerService sumserv = client.getSummonerService();
 			// Usage of getMatchStatsByName
 			ArrayList<MatchStats> stats = sumserv
-					.getLastMatchStatsByName("CaptainManiac");
+					.getLastMatchStatsByName("Exodragon");
 			for (MatchStats stat : stats) {
 				System.out.println(stat);
 			}
