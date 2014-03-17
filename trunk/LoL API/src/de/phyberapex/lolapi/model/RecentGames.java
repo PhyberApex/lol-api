@@ -2,6 +2,13 @@ package de.phyberapex.lolapi.model;
 
 import java.util.Set;
 
+/**
+ * This class represents the DTO "RecentGamesDto" for the game API by riot
+ * 
+ * @author Janis Walliser
+ * 
+ */
+
 public class RecentGames {
 	/**
 	 * Collection of recent games played (max 10).

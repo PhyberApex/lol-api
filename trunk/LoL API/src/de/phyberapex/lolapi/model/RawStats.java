@@ -1,5 +1,12 @@
 package de.phyberapex.lolapi.model;
 
+/**
+ * This class represents the DTO "RawStatsDto" for the game API by riot
+ * 
+ * @author Janis Walliser
+ * 
+ */
+
 public class RawStats {
 
 	private int assists;

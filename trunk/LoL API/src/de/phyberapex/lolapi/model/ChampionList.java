@@ -3,7 +3,7 @@ package de.phyberapex.lolapi.model;
 import java.util.List;
 
 /**
- * This class represents the DTO "ChampionListDto" for the champion-vxx API by
+ * This class represents the DTO "ChampionListDto" for the champion API by
  * riot
  * 
  * @author Janis Walliser
