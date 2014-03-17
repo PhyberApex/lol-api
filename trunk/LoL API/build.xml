@@ -5,15 +5,14 @@
 	<target name="create_api_only">
 		<jar destfile="build/LoL-API.jar" basedir="bin/" excludes="**/example/** **/test** **/client/gui/** **/persistance/**">
 			<manifest>
-				<attribute name="Main-Class" value="de.phyberapex.lolapi.main.APIStart" />
-				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/rtmps.jar" />
+				<attribute name="Main-Class" value="de.phyberapex.lolapi.Start" />
+				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar" />
 			</manifest>
 		</jar>
 		<delete dir="build/lib" />
 		<mkdir dir="build/lib" />
 		<copy file="lol_login.xml" todir="build/" />
 		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
-		<copy file="libs/rtmps.jar" todir="build/lib" />
 		<copy todir="build/resource">
 			<fileset dir="resource" excludes="**/img/**" />
 		</copy>
@@ -21,15 +20,14 @@
 	<target name="create_api_with_gui">
 		<jar destfile="build/LoL-API-GUI.jar" basedir="bin/" excludes="**/example/** **/test** **/persistance/**">
 			<manifest>
-				<attribute name="Main-Class" value="de.phyberapex.lolapi.gui.GUIStart" />
-				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/rtmps.jar" />
+				<attribute name="Main-Class" value="de.phyberapex.lolapi.GUIStart" />
+				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar" />
 			</manifest>
 		</jar>
 		<delete dir="build/lib" />
 		<mkdir dir="build/lib" />
-		<copy file="lol_login.xml" todir="build/" />
+		<copy file="api_config.xml" todir="build/" />
 		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
-		<copy file="libs/rtmps.jar" todir="build/lib" />
 		<copy todir="build/resource">
 			<fileset dir="resource" excludes="**/img/**" />
 		</copy>
@@ -37,17 +35,15 @@
 	<target name="api_with_persistance">
 		<jar destfile="build/LoL-API-Persistance.jar" basedir="bin/" excludes="**/example/** **/test** ">
 			<manifest>
-				<attribute name="Main-Class" value="de.phyberapex.lolapi.persistance.gui.GUIStart" />
-				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar lib/sqlite-jdbc-3.7.2.jar lib/rtmps.jar" />
+				<attribute name="Main-Class" value="de.phyberapex.lolapi.persistance.Start" />
+				<attribute name="Class-Path" value=". lib/gson-2.2.4.jar" />
 			</manifest>
 		</jar>
 		<delete dir="build/lib" />
 		<mkdir dir="build/lib" />
-		<copy file="lol_login.xml" todir="build/" />
-		<copy file="lol_persistance.xml" todir="build/" />
+		<copy file="api_config.xml" todir="build/" />
+		<copy file="persistance_config.xml" todir="build/" />
 		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
-		<copy file="libs/sqlite-jdbc-3.7.2.jar" todir="build/lib" />
-		<copy file="libs/rtmps.jar" todir="build/lib" />
 		<copy todir="build/resource">
 			<fileset dir="resource" />
 		</copy>
