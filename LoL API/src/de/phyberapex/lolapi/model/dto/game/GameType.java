@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.model;
+package de.phyberapex.lolapi.model.dto.game;
 
 /**
  * This enumeration is a helper to make handling game types from {@link Game}

@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.model;
+package de.phyberapex.lolapi.model.dto.champion;
 
 /**
  * This class represents the DTO "ChampionDto" for the champion API by riot
