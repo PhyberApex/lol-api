@@ -2,6 +2,13 @@ package de.phyberapex.lolapi.model;
 
 import java.util.List;
 
+/**
+ * This class represents the DTO "GameDto" for the game API by riot
+ * 
+ * @author Janis Walliser
+ * 
+ */
+
 public class Game {
 
 	/**

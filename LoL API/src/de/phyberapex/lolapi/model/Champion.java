@@ -1,7 +1,7 @@
 package de.phyberapex.lolapi.model;
 
 /**
- * This class represents the DTO "ChampionDto" for the champion-vxx API by riot
+ * This class represents the DTO "ChampionDto" for the champion API by riot
  * 
  * @author Janis Walliser
  * 
