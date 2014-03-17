@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.model;
+package de.phyberapex.lolapi.model.dto.game;
 
 /**
  * This class represents the DTO "PlayerDto" for the game API by riot

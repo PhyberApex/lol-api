@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.model;
+package de.phyberapex.lolapi.model.dto.game;
 
 import java.util.List;
 

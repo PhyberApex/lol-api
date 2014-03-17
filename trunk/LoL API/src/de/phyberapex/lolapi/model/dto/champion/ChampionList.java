@@ -1,4 +1,4 @@
-package de.phyberapex.lolapi.model;
+package de.phyberapex.lolapi.model.dto.champion;
 
 import java.util.List;
 
