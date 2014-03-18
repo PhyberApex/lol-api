@@ -1,4 +1,4 @@
-package de.phyberapex.base;
+package de.phyberapex.lolapi.base;
 
 import java.io.File;
 import java.io.FileInputStream;
