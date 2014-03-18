@@ -12,6 +12,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
 
+/**
+ * This class is used to seperate the file handling from the config class
+ * 
+ * @author Janis Walliser
+ *
+ */
+
 public class FileHelper {
 	public static String readFile(String path, Charset encoding)
 			throws IOException {
@@ -19,6 +26,13 @@ public class FileHelper {
 		return encoding.decode(ByteBuffer.wrap(encoded)).toString();
 	}
 
+	/**
+	 * This method is used to read a file from the path given
+	 * 
+	 * @param filePath the exact path to the file to read
+	 * @return
+	 * @throws IOException
+	 */
 	public static Properties readXMLPropertiesFile(String filePath)
 			throws IOException {
 		Properties returnValue = new Properties();
@@ -27,8 +41,16 @@ public class FileHelper {
 		return returnValue;
 	}
 
-	public static void writeXMLPropertiesFile(String string,
-			Properties lOL_LOGIN_INFO) throws FileNotFoundException, IOException {
-		lOL_LOGIN_INFO.storeToXML(new FileOutputStream(new File(string)), "");
+	/**
+	 * This method is used to store the config in a xml-file
+	 * 
+	 * @param path The path where it should be written to disk
+	 * @param config The {@link Properties} instance which should be written to disk
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public static void writeXMLPropertiesFile(String path,
+			Properties config) throws FileNotFoundException, IOException {
+		config.storeToXML(new FileOutputStream(new File(path)), "");
 	}
 }
