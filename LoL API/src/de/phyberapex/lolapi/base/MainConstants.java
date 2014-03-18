@@ -1,4 +1,4 @@
-package de.phyberapex.base;
+package de.phyberapex.lolapi.base;
 
 public class MainConstants {
 
