@@ -9,12 +9,9 @@ import de.phyberapex.lolapi.base.Config;
 import de.phyberapex.lolapi.model.Region;
 import de.phyberapex.lolapi.service.GameService;
 import de.phyberapex.lolapi.service.ServiceFactory;
-import de.phyberapex.lolapi.service.exception.BadRequestException;
 import de.phyberapex.lolapi.service.exception.GameDataNotFoundException;
-import de.phyberapex.lolapi.service.exception.InternalServerErrorException;
 import de.phyberapex.lolapi.service.exception.InvalidRegionException;
-import de.phyberapex.lolapi.service.exception.ServiceUnavailableException;
-import de.phyberapex.lolapi.service.exception.UnauthorizedException;
+import de.phyberapex.lolapi.service.exception.ServiceException;
 
 public class GameServiceImplTest {
 
@@ -32,9 +29,7 @@ public class GameServiceImplTest {
 			if (service.getRecentGames(Region.EUW, 36348289) == null) {
 				fail("No games found");
 			}
-		} catch (BadRequestException | UnauthorizedException
-				| GameDataNotFoundException | InternalServerErrorException
-				| ServiceUnavailableException | InvalidRegionException e) {
+		} catch (ServiceException e) {
 			fail("Exception thrown");
 		}
 	}
@@ -44,11 +39,10 @@ public class GameServiceImplTest {
 		try {
 			service.getRecentGames(Region.EUW, 2);
 			fail("No exception thrown");
-		} catch (BadRequestException | UnauthorizedException
-				| InternalServerErrorException | ServiceUnavailableException
-				| InvalidRegionException e) {
-			fail("Wrong exception thrown");
-		} catch (GameDataNotFoundException e) {
+		} catch (ServiceException e) {
+			if (e instanceof GameDataNotFoundException == false) {
+				fail("Wrong exception thrown");
+			}
 		}
 	}
 
@@ -57,12 +51,10 @@ public class GameServiceImplTest {
 		try {
 			service.getRecentGames(Region.TR, 36348289);
 			fail("No exception thrown");
-		} catch (BadRequestException | UnauthorizedException
-				| GameDataNotFoundException | InternalServerErrorException
-				| ServiceUnavailableException e) {
-			fail("Wrong exception thrown");
-		} catch (InvalidRegionException e) {
-
+		} catch (ServiceException e) {
+			if (e instanceof InvalidRegionException == false) {
+				fail("Wrong exception thrown");
+			}
 		}
 	}
 }

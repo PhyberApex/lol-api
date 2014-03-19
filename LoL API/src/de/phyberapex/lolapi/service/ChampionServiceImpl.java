@@ -10,6 +10,7 @@ import de.phyberapex.lolapi.service.exception.BadRequestException;
 import de.phyberapex.lolapi.service.exception.InternalServerErrorException;
 import de.phyberapex.lolapi.service.exception.InvalidRegionException;
 import de.phyberapex.lolapi.service.exception.RequestException;
+import de.phyberapex.lolapi.service.exception.ServiceException;
 import de.phyberapex.lolapi.service.exception.ServiceUnavailableException;
 import de.phyberapex.lolapi.service.exception.UnauthorizedException;
 
@@ -21,18 +22,13 @@ public class ChampionServiceImpl extends RiotApiService implements
 	}
 
 	@Override
-	public ChampionList getAllChampions(Region region)
-			throws InvalidRegionException, BadRequestException,
-			UnauthorizedException, InternalServerErrorException,
-			ServiceUnavailableException {
+	public ChampionList getAllChampions(Region region) throws ServiceException {
 		return getAllChampions(region, null);
 	}
 
 	@Override
 	public ChampionList getAllChampions(Region region, Boolean isFreeToPlay)
-			throws InvalidRegionException, BadRequestException,
-			UnauthorizedException, InternalServerErrorException,
-			ServiceUnavailableException {
+			throws ServiceException {
 		ChampionList returnValue = null;
 		if (getValidRegions().contains(region)) {
 

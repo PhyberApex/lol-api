@@ -11,6 +11,7 @@ import de.phyberapex.lolapi.service.exception.GameDataNotFoundException;
 import de.phyberapex.lolapi.service.exception.InternalServerErrorException;
 import de.phyberapex.lolapi.service.exception.InvalidRegionException;
 import de.phyberapex.lolapi.service.exception.RequestException;
+import de.phyberapex.lolapi.service.exception.ServiceException;
 import de.phyberapex.lolapi.service.exception.ServiceUnavailableException;
 import de.phyberapex.lolapi.service.exception.UnauthorizedException;
 
@@ -22,9 +23,7 @@ public class GameServiceImpl extends RiotApiService implements GameService {
 
 	@Override
 	public RecentGames getRecentGames(Region region, long summonerId)
-			throws BadRequestException, UnauthorizedException,
-			GameDataNotFoundException, InternalServerErrorException,
-			ServiceUnavailableException, InvalidRegionException {
+			throws ServiceException {
 		RecentGames returnValue = null;
 		if (getValidRegions().contains(region)) {
 
