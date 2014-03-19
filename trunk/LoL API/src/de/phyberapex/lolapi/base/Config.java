@@ -63,14 +63,14 @@ public class Config {
 		api_config = new Properties();
 		api_config.setProperty("API_KEY", "INSERT_API_KEY_HERE");
 		try {
-			FileHelper.writeXMLPropertiesFile("api_config.xml.sample",
+			FileHelper.writeXMLPropertiesFile("api_config.xml.ex",
 					api_config);
 			if (mode == Mode.PERSISTENCE) {
 				persistence_config = new Properties();
 				persistence_config.setProperty("DATABASE_FILE",
 						"INSERT_NAME_OF_DATABASE_HERE");
 				FileHelper.writeXMLPropertiesFile(
-						"persistence_config.xml.sample", persistence_config);
+						"persistence_config.xml.ex", persistence_config);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

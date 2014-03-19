@@ -1,6 +1,6 @@
 package de.phyberapex.lolapi.service.exception;
 
-public class RequestException extends Exception {
+public class RequestException extends ServiceException {
 
 	private int errorCode;
 	private static final long serialVersionUID = 1L;
