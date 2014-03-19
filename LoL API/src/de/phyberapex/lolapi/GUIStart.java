@@ -8,6 +8,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import de.phyberapex.lolapi.base.Config;
 import de.phyberapex.lolapi.base.Mode;
+import de.phyberapex.lolapi.view.MainView;
 
 public class GUIStart {
 
@@ -15,6 +16,7 @@ public class GUIStart {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			Config.getInstance().setMode(Mode.GUI_API);
+			new MainView();
 		} catch (IOException e) {
 			JOptionPane
 					.showMessageDialog(null,
