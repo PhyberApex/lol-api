@@ -1,5 +1,12 @@
 package de.phyberapex.lolapi.service;
 
-public class StatsService {
+/**
+ * This interface represents the lol-static-data service from the riot API
+ * 
+ * @author Janis Walliser
+ * 
+ */
+
+public interface StatsService extends Service {
 
 }

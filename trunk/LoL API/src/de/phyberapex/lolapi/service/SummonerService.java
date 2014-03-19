@@ -1,5 +1,12 @@
 package de.phyberapex.lolapi.service;
 
-public class SummonerService {
+/**
+ * This interface represents the summoner service from the riot API
+ * 
+ * @author Janis Walliser
+ * 
+ */
+
+public interface SummonerService extends Service {
 
 }
