@@ -8,10 +8,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import de.phyberapex.lolapi.base.Config;
+import de.phyberapex.lolapi.service.exception.RequestException;
 
 public class APIRequestHelper {
 
-	public static String request(String requestURL) {
+	public static String request(String requestURL) throws RequestException {
 		try {
 			int timeout = 5000;
 			URL u = new URL(requestURL+"api_key="+Config.getInstance().getApikey());
@@ -37,6 +38,8 @@ public class APIRequestHelper {
 				}
 				br.close();
 				return sb.toString();
+			default:
+					throw new RequestException(status);
 			}
 
 		} catch (MalformedURLException ex) {
