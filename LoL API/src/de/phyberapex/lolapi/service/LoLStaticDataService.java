@@ -1,5 +1,5 @@
 package de.phyberapex.lolapi.service;
 
-public class LoLStaticDataService {
+public interface LoLStaticDataService extends Service {
 
 }

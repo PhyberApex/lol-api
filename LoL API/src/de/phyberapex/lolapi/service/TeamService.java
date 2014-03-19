@@ -1,5 +1,12 @@
 package de.phyberapex.lolapi.service;
 
-public class TeamService {
+/**
+ * This interface represents the team service from the riot API
+ * 
+ * @author Janis Walliser
+ * 
+ */
+
+public interface TeamService extends Service {
 
 }
