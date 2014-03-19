@@ -12,7 +12,6 @@
 		<delete dir="build/lib" />
 		<mkdir dir="build/lib" />
 		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
-		<copy todir="build/resource">
 			<fileset dir="resource" excludes="**/img/**" />
 		</copy>
 	</target>
@@ -27,7 +26,6 @@
 		<mkdir dir="build/lib" />
 		<copy file="api_config.xml" todir="build/" />
 		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
-		<copy todir="build/resource">
 			<fileset dir="resource" excludes="**/img/**" />
 		</copy>
 	</target>
@@ -43,8 +41,5 @@
 		<copy file="api_config.xml" todir="build/" />
 		<copy file="persistance_config.xml" todir="build/" />
 		<copy file="libs/gson-2.2.4.jar" todir="build/lib" />
-		<copy todir="build/resource">
-			<fileset dir="resource" />
-		</copy>
 	</target>
 </project>
